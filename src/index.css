@@ -3,9 +3,11 @@
 @tailwind utilities;
 
 @layer components {
-  .cut-word {
+  .text-cut {
+    overflow: hidden;
     text-overflow: ellipsis;
-    word-wrap: break-word;
-    overflow: hidden !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* number of lines to show */
+    -webkit-box-orient: vertical;
   }
 }

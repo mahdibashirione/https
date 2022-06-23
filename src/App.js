@@ -1,10 +1,10 @@
-import ComentList from "./components/ComentList/ComentList";
+import Discussion from "./container/Discussion/Discussion";
 
 function App() {
   return (
-    <main className="w-full">
-      <ComentList />
-    </main>
+    <>
+      <Discussion />
+    </>
   );
 }
 

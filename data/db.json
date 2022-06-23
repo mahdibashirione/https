@@ -1,0 +1,26 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "name": "mamad",
+      "email": "mahdi94250@gmail.com",
+      "body": "سلام",
+      "id": 1
+    },
+    {
+      "name": "taghi",
+      "email": "taghi@ex.com",
+      "body": "چقدر چرته این زندگل",
+      "id": 3
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
