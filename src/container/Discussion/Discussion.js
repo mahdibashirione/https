@@ -18,7 +18,7 @@ const Discussion = () => {
   async function getComents() {
     try {
       const { data } = await axios.get("/comments")
-      setComents(data)
+      setComents(data.comments)
     } catch (error) {
       console.log(error)
     }
@@ -34,7 +34,7 @@ const Discussion = () => {
         <div className="py-4">
           <h2 className="ml-4">All Coments</h2>
           <div className="container mt-4 px-4 gap-x-2 flex justify-start max-w-full overflow-x-scroll">
-            {Coments ? Coments.map(c => <Coment key={c.id} coment={c} selectComent={() => selectComentHandler(c.id)} />) : <p>Loading...</p>}
+            {Coments ? Coments.map(c => <Coment key={c._id} coment={c} selectComent={() => selectComentHandler(c._id)} />) : <p>Loading...</p>}
           </div>
         </div>
       </section>

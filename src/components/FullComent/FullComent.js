@@ -14,7 +14,7 @@ const FullComent = ({ comentId, setComents, setComentId }) => {
   async function getComent(id) {
     try {
       const { data } = await axios.get(`/comments/${id}`)
-      setComent(data)
+      setComent(data.comment)
     } catch (error) { }
   }
 
@@ -22,7 +22,7 @@ const FullComent = ({ comentId, setComents, setComentId }) => {
     try {
       await axios.delete(`/comments/${id}`)
       const { data } = await axios.get("/comments")
-      setComents(data)
+      setComents(data.comments)
       setComent(null)
       setComentId(null)
     } catch (error) {
@@ -33,10 +33,10 @@ const FullComent = ({ comentId, setComents, setComentId }) => {
   let comentDtail = <p>plese!selected coment</p>
   if (comentId) comentDtail = <p>Loading...</p>
   if (coment) comentDtail = <div className="max-w-[600px] md:rounded-lg mx-auto bg-purple-400 flex flex-col items-start gap-y-4 font-sans p-4">
-    <span>name: {coment.name}</span>
-    <span>email: {coment.email}</span>
-    <span>coment: {coment.body}</span>
-    <button onClick={() => deletComentHandler(coment.id)} className="px-6 py-2 border border-red-500 rounded-lg text-red-500">delete</button>
+    <span>name: {coment.user.name}</span>
+    <span>email: {coment.user.email}</span>
+    <span>coment: {coment.text}</span>
+    <button onClick={() => deletComentHandler(coment._id)} className="px-6 py-2 border border-red-500 rounded-lg text-red-500">delete</button>
   </div>
 
   return comentDtail;

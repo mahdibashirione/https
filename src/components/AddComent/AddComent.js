@@ -6,21 +6,23 @@ const AddComent = ({ addNewComentHandler }) => {
   const [newComent, setNewComent] = useState({
     name: "",
     email: "",
-    body: "",
+    text: "",
   })
+
+  const headers = { 'Content-Type': 'application/json' }
 
   const changeHandler = (e) => {
     setNewComent({ ...newComent, [e.target.name]: e.target.value })
   }
 
   const postComentHandler = (coment) => {
-    axios.post("http://localhost:3001/comments", coment)
-      .then(res => axios.get("http://localhost:3001/comments"))
+    axios.post("/comments", coment, headers)
+      .then(res => axios.get("/comments"))
       .then(res => addNewComentHandler(res.data))
     setNewComent({
       name: "",
       email: "",
-      body: "",
+      text: "",
     })
   }
 
@@ -38,7 +40,7 @@ const AddComent = ({ addNewComentHandler }) => {
           </div>
           <div className="flex flex-col items-start gap-y-2 mt-2">
             <label for="text" className="text-white font-sans">Text</label>
-            <textarea value={newComent.body} onChange={changeHandler} id="text" type={"textarea"} name="body" className="outline-none p-2 rounded-lg border-2 focus:border-blue-500" />
+            <textarea value={newComent.text} onChange={changeHandler} id="text" type={"textarea"} name="text" className="outline-none p-2 rounded-lg border-2 focus:border-blue-500" />
           </div>
           <button onClick={() => postComentHandler(newComent)} className="w-full text-white bg-black rounded-lg mt-4 py-4">Add Coment</button>
         </div>
